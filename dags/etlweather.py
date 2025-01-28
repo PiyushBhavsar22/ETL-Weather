@@ -76,3 +76,20 @@ with DAG(dag_id='weather_etl_pipeline',
             timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
         """)
+
+        # Insert transformed data into the table
+        cursor.execute("""
+        INSERT INTO weather_data (latitude, longitude, temperature, windspeed, winddirection, weathercode)
+        VALUES (%s, %s, %s, %s, %s, %s)
+        """, (
+            transformed_data['latitude'],
+            transformed_data['longitude'],
+            transformed_data['temperature'],
+            transformed_data['windspeed'],
+            transformed_data['winddirection'],
+            transformed_data['weathercode']
+        ))
+
+        conn.commit()
+        cursor.close()
+    
