@@ -39,7 +39,7 @@ astro dev start
 ```
 - Navigate to **Admin > Connections**
 - Add **Postgres connection**.
-- Add **Open Meteo API connection** (HTTP).
+- Add **Open Meteo API connection**.
 - Run the `weather_etl_pipeline`.
 
 ### 3️⃣ Access Database using DBeaver
